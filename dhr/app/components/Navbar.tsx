@@ -9,25 +9,44 @@ export default function Navbar() {
   return (
     <nav className="bg-black shadow-lg sticky top-0 z-50 border-b border-gray-800">
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
-        <Link href="/" className="text-2xl font-bold text-white hover:text-gray-300 transition-colors">
+        
+        {/* Logo */}
+        <Link
+          href="/"
+          className="text-2xl font-bold text-white hover:text-gray-300 transition-colors"
+        >
           DREAM HEAVEN REALTY LLC
         </Link>
 
         {/* Desktop Menu */}
         <div className="hidden lg:flex space-x-6 items-center text-sm font-medium">
-          <Link href="/about" className="text-gray-300 hover:text-white transition-colors">About</Link>
-          <Link href="/services" className="text-gray-300 hover:text-white transition-colors">Services</Link>
-          <Link href="/properties" className="text-gray-300 hover:text-white transition-colors">Properties</Link>
-          <Link href="/portfolio" className="text-gray-300 hover:text-white transition-colors">Portfolio</Link>
-          <Link href="/agents" className="text-gray-300 hover:text-white transition-colors">Agents</Link>
-          <Link href="/blog" className="text-gray-300 hover:text-white transition-colors">Blog</Link>
-          <Link href="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link>
+          <Link href="/about-us" className="text-gray-300 hover:text-white transition-colors">
+            About Us
+          </Link>
+          <Link href="/why-dhr" className="text-gray-300 hover:text-white transition-colors">
+            Why DHR
+          </Link>
+          <Link href="/buy" className="text-gray-300 hover:text-white transition-colors">
+            Buy
+          </Link>
+          <Link href="/rent" className="text-gray-300 hover:text-white transition-colors">
+            Rent
+          </Link>
+          <Link href="/agents" className="text-gray-300 hover:text-white transition-colors">
+            Agents
+          </Link>
+          <Link href="/blogs" className="text-gray-300 hover:text-white transition-colors">
+            Blogs
+          </Link>
+          <Link href="/contact-us" className="text-gray-300 hover:text-white transition-colors">
+            Contact Us
+          </Link>
 
           <Link
-            href="/contact"
+            href="/earn-with-dhr"
             className="bg-white text-black px-6 py-2 rounded-full hover:bg-gray-200 transition-colors shadow-md font-semibold"
           >
-            Get Started
+            Earn With DHR
           </Link>
         </div>
 
@@ -49,19 +68,34 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-black border-t border-gray-800">
-          <div className="flex flex-col space-y-4 px-6 py-4">
-            <Link href="/about" className="text-gray-300 hover:text-white transition-colors">About</Link>
-            <Link href="/services" className="text-gray-300 hover:text-white transition-colors">Services</Link>
-            <Link href="/properties" className="text-gray-300 hover:text-white transition-colors">Properties</Link>
-            <Link href="/portfolio" className="text-gray-300 hover:text-white transition-colors">Portfolio</Link>
-            <Link href="/agents" className="text-gray-300 hover:text-white transition-colors">Agents</Link>
-            <Link href="/blog" className="text-gray-300 hover:text-white transition-colors">Blog</Link>
-            <Link href="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link>
+          <div className="flex flex-col space-y-4 px-6 py-4 text-sm font-medium">
+            <Link href="/about-us" className="text-gray-300 hover:text-white">
+              About Us
+            </Link>
+            <Link href="/why-dhr" className="text-gray-300 hover:text-white">
+              Why DHR
+            </Link>
+            <Link href="/buy" className="text-gray-300 hover:text-white">
+              Buy
+            </Link>
+            <Link href="/rent" className="text-gray-300 hover:text-white">
+              Rent
+            </Link>
+            <Link href="/agents" className="text-gray-300 hover:text-white">
+              Agents
+            </Link>
+            <Link href="/blogs" className="text-gray-300 hover:text-white">
+              Blogs
+            </Link>
+            <Link href="/contact-us" className="text-gray-300 hover:text-white">
+              Contact Us
+            </Link>
+
             <Link
-              href="/contact"
-              className="bg-white text-black px-6 py-2 rounded-full hover:bg-gray-200 transition-colors text-center font-semibold"
+              href="/earn-with-dhr"
+              className="bg-white text-black px-6 py-2 rounded-full hover:bg-gray-200 text-center font-semibold"
             >
-              Get Started
+              Earn With DHR
             </Link>
           </div>
         </div>
