@@ -1,18 +1,18 @@
 export default function FooterCTA() {
   return (
-    <section className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white text-center py-16">
+    <section className="bg-black text-white text-center py-16">
       <div className="container mx-auto px-6">
         <h2 className="text-4xl font-bold mb-4">
           Ready to Buy or Sell Your Property?
         </h2>
-        <p className="text-xl mb-8 max-w-2xl mx-auto text-yellow-50">
+        <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-300">
           Take the first step towards your real estate goals. Our expert team is here to guide you every step of the way.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="bg-white text-yellow-500 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-colors shadow-lg text-lg">
+          <button className="bg-white text-black px-8 py-4 rounded-full font-semibold hover:bg-gray-200 transition-colors shadow-lg text-lg">
             Get Free Consultation
           </button>
-          <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-yellow-500 transition-colors text-lg">
+          <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-black transition-colors text-lg">
             Call Us Now
           </button>
         </div>
@@ -24,7 +24,7 @@ export default function FooterCTA() {
             </svg>
             <div className="text-left">
               <div className="font-bold">24/7 Support</div>
-              <div className="text-sm text-yellow-100">Always here for you</div>
+              <div className="text-sm text-gray-400">Always here for you</div>
             </div>
           </div>
 
@@ -34,7 +34,7 @@ export default function FooterCTA() {
             </svg>
             <div className="text-left">
               <div className="font-bold">Trusted Service</div>
-              <div className="text-sm text-yellow-100">15+ years experience</div>
+              <div className="text-sm text-gray-400">15+ years experience</div>
             </div>
           </div>
 
@@ -44,7 +44,7 @@ export default function FooterCTA() {
             </svg>
             <div className="text-left">
               <div className="font-bold">Best Prices</div>
-              <div className="text-sm text-yellow-100">Competitive rates</div>
+              <div className="text-sm text-gray-400">Competitive rates</div>
             </div>
           </div>
         </div>

@@ -1,20 +1,20 @@
 export default function PropertyCard() {
   return (
-    <div className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+    <div className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200">
       <div className="relative">
         <img
           src="/images/property.jpg"
           alt="Property"
-          className="w-full h-64 object-cover"
+          className="w-full h-64 object-cover grayscale"
         />
         <div className="absolute top-4 left-4">
-          <span className="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+          <span className="bg-black text-white px-3 py-1 rounded-full text-sm font-semibold">
             For Sale
           </span>
         </div>
         <div className="absolute top-4 right-4">
           <button className="bg-white p-2 rounded-full shadow-lg hover:bg-gray-100 transition-colors">
-            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
             </svg>
           </button>
@@ -24,7 +24,7 @@ export default function PropertyCard() {
       <div className="p-5">
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-xl font-bold text-gray-800">Luxury Apartment</h3>
-          <div className="text-yellow-500 font-bold text-2xl">$850,000</div>
+          <div className="text-black font-bold text-2xl">$850,000</div>
         </div>
 
         <p className="text-gray-600 mb-4 flex items-center">
@@ -35,7 +35,7 @@ export default function PropertyCard() {
           Dubai Marina, Dubai
         </p>
 
-        <div className="flex items-center justify-between text-sm text-gray-600 border-t pt-4">
+        <div className="flex items-center justify-between text-sm text-gray-600 border-t border-gray-200 pt-4">
           <div className="flex items-center">
             <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -56,7 +56,7 @@ export default function PropertyCard() {
           </div>
         </div>
 
-        <button className="w-full mt-4 bg-yellow-500 text-white py-3 rounded-lg font-semibold hover:bg-yellow-600 transition-colors">
+        <button className="w-full mt-4 bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
           View Details
         </button>
       </div>
