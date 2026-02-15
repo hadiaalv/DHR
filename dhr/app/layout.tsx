@@ -1,10 +1,10 @@
-import "./styles/globals.css";
+import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 export const metadata = {
-  title: "Dream Heaven Realty LLC",
-  description: "Premium Real Estate Company",
+  title: "Dream Heaven Realty LLC - Premium Real Estate Company",
+  description: "Your trusted partner in finding the perfect property. Excellence in real estate since 2009.",
 };
 
 export default function RootLayout({
@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-white text-gray-800">
         <Navbar />
-        {children}
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

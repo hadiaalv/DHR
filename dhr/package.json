@@ -1,6 +1,6 @@
 {
-  "name": "dhr",
-  "version": "0.1.0",
+  "name": "dream-heaven-realty",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -14,7 +14,6 @@
     "react-dom": "19.2.3"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
