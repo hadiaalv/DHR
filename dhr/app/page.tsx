@@ -7,32 +7,65 @@ export default function Home() {
       <HeroSection />
 
       {/* Featured Properties Section */}
-      <section className="container mx-auto px-6 py-16 bg-white">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Featured Properties</h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Discover our handpicked selection of premium properties in the most sought-after locations
-          </p>
-        </div>
+      <section
+        id="properties"
+        className="bg-linear-to-b from-white to-gray-50 py-16"
+      >
+        <div className="container mx-auto px-6">
+          <div className="mb-10 flex flex-col items-center justify-between gap-6 text-center md:mb-14 md:flex-row md:text-left">
+            <div>
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 md:text-4xl">
+                Featured properties
+              </h2>
+              <p className="mt-3 max-w-xl text-gray-600">
+                Discover a hand‑picked portfolio of premium apartments and villas in Dubai’s
+                most sought‑after communities.
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-3 text-xs">
+              <button className="rounded-full border border-gray-200 bg-white px-4 py-1.5 font-medium text-gray-800 shadow-sm">
+                All
+              </button>
+              <button className="rounded-full border border-gray-100 bg-gray-50 px-4 py-1.5 text-gray-700 hover:bg-white">
+                Marina
+              </button>
+              <button className="rounded-full border border-gray-100 bg-gray-50 px-4 py-1.5 text-gray-700 hover:bg-white">
+                Downtown
+              </button>
+              <button className="rounded-full border border-gray-100 bg-gray-50 px-4 py-1.5 text-gray-700 hover:bg-white">
+                Palm Jumeirah
+              </button>
+            </div>
+          </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <PropertyCard />
-          <PropertyCard />
-          <PropertyCard />
-          <PropertyCard />
-          <PropertyCard />
-          <PropertyCard />
-        </div>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <PropertyCard />
+            <PropertyCard />
+            <PropertyCard />
+            <PropertyCard />
+            <PropertyCard />
+            <PropertyCard />
+          </div>
 
-        <div className="text-center mt-12">
-          <button className="bg-black text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors shadow-lg">
-            View All Properties
-          </button>
+          <div className="mt-12 flex flex-col items-center justify-between gap-4 text-center md:flex-row md:text-left">
+            <p className="text-sm text-gray-500">
+              Showing curated listings only. For a complete portfolio, speak with our advisory
+              team.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <button className="rounded-full bg-black px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-black/15 transition hover:-translate-y-0.5 hover:bg-gray-900">
+                View all properties
+              </button>
+              <button className="rounded-full border border-gray-300 px-7 py-3 text-sm font-semibold text-gray-800 hover:border-gray-400 hover:bg-white">
+                Talk to an expert
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="bg-gray-50 py-16">
+      <section id="services" className="bg-gray-50 py-16">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
@@ -157,19 +190,22 @@ export default function Home() {
       {/* Call to Action */}
       <section className="bg-black text-white text-center py-16">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-bold mb-4">
-            Ready to Find Your Dream Property?
-          </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-300">
-            Let our expert team help you find the perfect property that matches your needs and budget
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-black px-8 py-4 rounded-lg font-semibold hover:bg-gray-200 transition-colors shadow-lg text-lg">
-              Browse Properties
-            </button>
-            <button className="bg-gray-800 text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-700 transition-colors shadow-lg text-lg border border-gray-600">
-              Contact Us Today
-            </button>
+          <div className="mx-auto max-w-3xl">
+            <h2 className="text-3xl font-bold md:text-4xl">
+              Ready to find your next address in Dubai?
+            </h2>
+            <p className="mt-4 text-lg text-gray-300">
+              Share your preferences and receive a hand‑picked shortlist of properties within 24 hours,
+              curated by our senior advisors.
+            </p>
+            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <button className="rounded-full bg-white px-8 py-4 text-sm font-semibold text-black shadow-lg shadow-white/20 transition hover:-translate-y-0.5 hover:bg-gray-100">
+                Get a personalized shortlist
+              </button>
+              <button className="rounded-full border border-gray-500 bg-transparent px-8 py-4 text-sm font-semibold text-white hover:border-white hover:bg-white/5">
+                Book a consultation call
+              </button>
+            </div>
           </div>
         </div>
       </section>
