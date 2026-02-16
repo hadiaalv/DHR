@@ -26,7 +26,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-black text-white">
+    <section className="relative overflow-hidden bg-gray-900 text-white">
       {/* Background image with subtle parallax feel */}
       <div
         className="absolute inset-0 bg-cover bg-center scale-105 transform-gpu"
@@ -34,8 +34,8 @@ export default function HeroSection() {
       />
 
       {/* Gradient & vignette overlays */}
-      <div className="absolute inset-0 bg-linear-to-b from-black via-black/80 to-black/95" />
-      <div className="pointer-events-none absolute inset-0 opacity-50 mix-blend-multiply bg-radial from-white/5 via-transparent to-black" />
+      <div className="absolute inset-0 bg-linear-to-b from-gray-900 via-gray-900/80 to-gray-900/95" />
+      <div className="pointer-events-none absolute inset-0 opacity-50 mix-blend-multiply bg-radial from-white/5 via-transparent to-gray-900" />
 
       {/* Glow behind content */}
       <div className="pointer-events-none absolute -inset-x-32 top-32 h-64 bg-linear-to-r from-white/10 via-white/20 to-transparent blur-3xl opacity-40" />
@@ -79,7 +79,7 @@ export default function HeroSection() {
                 placeholder="Location or community"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                className="w-full rounded-xl border border-white/15 bg-black/20 px-4 py-3 text-sm text-white placeholder:text-gray-400 focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/25"
+                className="w-full rounded-xl border border-white/15 bg-gray-900/20 px-4 py-3 text-sm text-white placeholder:text-gray-400 focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/25"
               />
               <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500">
                 <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -127,7 +127,7 @@ export default function HeroSection() {
               type="button"
               onClick={handleSearch}
               disabled={false}
-              className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-semibold text-black shadow-lg shadow-white/30 transition hover:-translate-y-0.5 hover:bg-gray-100 disabled:cursor-not-allowed disabled:bg-white/60 disabled:text-gray-500"
+              className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-semibold text-gray-900 shadow-lg shadow-white/30 transition hover:-translate-y-0.5 hover:bg-gray-100 disabled:cursor-not-allowed disabled:bg-white/60 disabled:text-gray-500"
             >
               <svg
                 className="mr-2 h-4 w-4"

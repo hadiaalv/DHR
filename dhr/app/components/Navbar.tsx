@@ -61,12 +61,12 @@ export default function Navbar() {
 
           {/* Center: Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="relative h-10 w-40 md:h-12 md:w-48">
+            <div className="relative h-24 w-80 md:h-28 md:w-[450px]">
               <Image
                 src="/images/logo.png"
                 alt="Dream Heaven Realty"
                 fill
-                sizes="192px"
+                sizes="450px"
                 className="object-contain"
                 priority
                 unoptimized
@@ -78,7 +78,7 @@ export default function Navbar() {
           <div className="flex items-center gap-3 text-xs sm:text-sm">
             <Link
               href="/earn-with-dhr"
-              className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-1.5 font-semibold text-white shadow-md hover:bg-gray-800 transition-colors"
+              className="inline-flex items-center gap-2 rounded-full bg-gray-900 px-4 py-1.5 font-semibold text-white shadow-md hover:bg-gray-800 transition-colors"
             >
               <span>Earn With DHR</span>
             </Link>
@@ -95,12 +95,12 @@ export default function Navbar() {
               className="flex items-center gap-2"
               onClick={() => setMenuOpen(false)}
             >
-              <div className="relative h-10 w-40 md:h-12 md:w-48">
+              <div className="relative h-24 w-80 md:h-28 md:w-[450px]">
                 <Image
-                  src="/images/logo.jpeg"
+                  src="/images/logo.png"
                   alt="Dream Heaven Realty"
                   fill
-                  sizes="192px"
+                  sizes="450px"
                   className="object-contain"
                   unoptimized
                 />

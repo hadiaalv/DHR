@@ -5,9 +5,9 @@ export default function AgentCard() {
         <img
           src="/images/agent.jpg"
           alt="Agent"
-          className="w-32 h-32 rounded-full mx-auto object-cover border-4 border-black grayscale"
+          className="w-32 h-32 rounded-full mx-auto object-cover border-4 border-gray-900 grayscale"
         />
-        <div className="absolute bottom-0 right-0 bg-black w-6 h-6 rounded-full border-2 border-white"></div>
+        <div className="absolute bottom-0 right-0 bg-gray-900 w-6 h-6 rounded-full border-2 border-white"></div>
       </div>
       
       <h3 className="font-bold text-xl text-gray-900 mb-1">John Doe</h3>
@@ -27,10 +27,10 @@ export default function AgentCard() {
       </div>
 
       <div className="flex space-x-2">
-        <button className="flex-1 bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition-colors text-sm font-semibold">
+        <button className="flex-1 bg-gray-900 text-white py-2 rounded-lg hover:bg-gray-800 transition-colors text-sm font-semibold">
           Contact
         </button>
-        <button className="flex-1 border border-black text-black py-2 rounded-lg hover:bg-gray-100 transition-colors text-sm font-semibold">
+        <button className="flex-1 border border-gray-900 text-gray-900 py-2 rounded-lg hover:bg-gray-100 transition-colors text-sm font-semibold">
           View Profile
         </button>
       </div>
