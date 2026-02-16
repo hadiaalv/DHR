@@ -5,17 +5,16 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
+// Keep sitemap exactly as before
 const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/off-plan", label: "Off Plan" },
-  { href: "/resale", label: "Resale" },
-  { href: "/rent", label: "Rental" },
-  { href: "/services", label: "Services" },
-  { href: "/communities", label: "Communities" },
-  { href: "/developers", label: "Developers" },
+  { href: "/about-us", label: "About Us" },
+  { href: "/why-dhr", label: "Why DHR" },
+  { href: "/buy", label: "Buy" },
+  { href: "/rent", label: "Rent" },
+  { href: "/agents", label: "Agents" },
+  { href: "/blogs", label: "Blogs" },
   { href: "/contact-us", label: "Contact Us" },
-  { href: "/book-meeting", label: "Book a Meeting" },
-  { href: "/find-property", label: "Find a Property" },
+  { href: "/earn-with-dhr", label: "Earn With DHR" },
 ];
 
 export default function Navbar() {
@@ -74,33 +73,13 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Right: Actions */}
+          {/* Right: Primary CTA (same route as before) */}
           <div className="flex items-center gap-3 text-xs sm:text-sm">
             <Link
-              href="/careers"
-              className="hidden sm:inline-flex items-center rounded-full border border-white/70 px-4 py-1.5 font-medium text-white hover:bg-white/10"
+              href="/earn-with-dhr"
+              className="inline-flex items-center gap-2 rounded-full bg-white/95 px-4 py-1.5 font-semibold text-black shadow-md hover:bg-white"
             >
-              Careers
-            </Link>
-            <Link
-              href="/find-property"
-              className="inline-flex items-center gap-2 rounded-full bg-white/95 px-4 py-1.5 font-medium text-black shadow-md hover:bg-white"
-            >
-              <svg
-                className="h-4 w-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 21l-4.35-4.35M11 18a7 7 0 100-14 7 7 0 000 14z"
-                />
-              </svg>
-              <span className="hidden sm:inline">Find a Property</span>
-              <span className="sm:hidden">Find</span>
+              <span>Earn With DHR</span>
             </Link>
           </div>
         </div>
