@@ -153,7 +153,7 @@ export default function PropertyCard() {
 
         <button
           type="button"
-          className="group/button mt-2 inline-flex w-full items-center justify-between rounded-xl bg-black px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-black/20 transition hover:-translate-y-0.5 hover:bg-gray-900"
+          className="group/button mt-2 inline-flex w-full items-center justify-between rounded-xl bg-gray-900 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-gray-900/20 transition hover:-translate-y-0.5 hover:bg-gray-800"
         >
           <span>View details & schedule a private tour</span>
           <span className="ml-3 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/10 transition group-hover/button:translate-x-0.5">

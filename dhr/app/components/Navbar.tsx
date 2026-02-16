@@ -38,10 +38,10 @@ export default function Navbar() {
     <>
       {/* Top bar */}
       <nav
-        className={`sticky top-0 z-40 border-b border-transparent backdrop-blur-xl transition-all duration-300 ${
+        className={`sticky top-0 z-40 border-b border-gray-200/50 backdrop-blur-xl transition-all duration-300 ${
           scrolled
-            ? "bg-black/80 border-white/10"
-            : "bg-black/40"
+            ? "bg-[#F5F5F0]/95 border-gray-200 shadow-sm"
+            : "bg-[#F5F5F0]/80"
         }`}
       >
         <div className="container mx-auto flex items-center justify-between px-4 py-3 md:px-6">
@@ -49,26 +49,27 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setMenuOpen(true)}
-            className="inline-flex items-center gap-2 text-sm font-medium text-white/90 hover:text-white"
+            className="inline-flex items-center gap-2 text-sm font-medium text-gray-800 hover:text-gray-900"
           >
             <span className="relative flex h-5 w-5 items-center justify-center">
-              <span className="absolute inset-x-0 top-[4px] h-[1.5px] rounded-full bg-white" />
-              <span className="absolute inset-x-0 top-[9px] h-[1.5px] rounded-full bg-white" />
-              <span className="absolute inset-x-0 top-[14px] h-[1.5px] rounded-full bg-white" />
+              <span className="absolute inset-x-0 top-[4px] h-[1.5px] rounded-full bg-gray-800" />
+              <span className="absolute inset-x-0 top-[9px] h-[1.5px] rounded-full bg-gray-800" />
+              <span className="absolute inset-x-0 top-[14px] h-[1.5px] rounded-full bg-gray-800" />
             </span>
             <span className="hidden sm:inline">Menu</span>
           </button>
 
           {/* Center: Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="relative h-8 w-32 md:h-10 md:w-40">
+            <div className="relative h-24 w-80 md:h-28 md:w-[450px]">
               <Image
-                src="/images/logo.jpeg"
+                src="/images/logo.png"
                 alt="Dream Heaven Realty"
                 fill
-                sizes="160px"
+                sizes="450px"
                 className="object-contain"
                 priority
+                unoptimized
               />
             </div>
           </Link>
@@ -77,7 +78,7 @@ export default function Navbar() {
           <div className="flex items-center gap-3 text-xs sm:text-sm">
             <Link
               href="/earn-with-dhr"
-              className="inline-flex items-center gap-2 rounded-full bg-white/95 px-4 py-1.5 font-semibold text-black shadow-md hover:bg-white"
+              className="inline-flex items-center gap-2 rounded-full bg-gray-900 px-4 py-1.5 font-semibold text-white shadow-md hover:bg-gray-800 transition-colors"
             >
               <span>Earn With DHR</span>
             </Link>
@@ -87,20 +88,21 @@ export default function Navbar() {
 
       {/* Full-screen overlay menu */}
       {menuOpen && (
-        <div className="fixed inset-0 z-50 bg-[#022733] text-white">
-          <div className="flex items-center justify-between border-b border-white/10 px-4 py-4 md:px-6">
+        <div className="fixed inset-0 z-50 bg-[#F5F5F0] text-gray-900">
+          <div className="flex items-center justify-between border-b border-gray-200 px-4 py-4 md:px-6">
             <Link
               href="/"
               className="flex items-center gap-2"
               onClick={() => setMenuOpen(false)}
             >
-              <div className="relative h-8 w-32 md:h-10 md:w-40">
+              <div className="relative h-24 w-80 md:h-28 md:w-[450px]">
                 <Image
-                  src="/images/logo.jpeg"
+                  src="/images/logo.png"
                   alt="Dream Heaven Realty"
                   fill
-                  sizes="160px"
+                  sizes="450px"
                   className="object-contain"
+                  unoptimized
                 />
               </div>
             </Link>
@@ -108,11 +110,11 @@ export default function Navbar() {
               type="button"
               onClick={() => setMenuOpen(false)}
               aria-label="Close menu"
-              className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/30 hover:bg-white/10"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 hover:bg-gray-100 transition-colors"
             >
               <span className="sr-only">Close</span>
               <svg
-                className="h-4 w-4"
+                className="h-4 w-4 text-gray-800"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -134,13 +136,13 @@ export default function Navbar() {
                   <Link
                     href={item.href}
                     onClick={() => setMenuOpen(false)}
-                    className={`flex items-center justify-between border-b border-white/5 pb-3 text-white/90 hover:text-white ${
-                      isActive(item.href) ? "font-semibold" : ""
+                    className={`flex items-center justify-between border-b border-gray-200 pb-3 text-gray-700 hover:text-gray-900 transition-colors ${
+                      isActive(item.href) ? "font-semibold text-gray-900" : ""
                     }`}
                   >
                     <span>{item.label}</span>
                     {isActive(item.href) && (
-                      <span className="h-1.5 w-1.5 rounded-full bg-white" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-gray-900" />
                     )}
                   </Link>
                 </li>

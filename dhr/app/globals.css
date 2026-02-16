@@ -3,7 +3,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #000000;
+  --foreground: #1a1a1a;
   --accent: #1a1a1a;
   --gray-dark: #2d2d2d;
   --gray-medium: #666666;
@@ -44,7 +44,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #000000;
+  background: #1a1a1a;
 }
 
 /* Smooth transitions */
