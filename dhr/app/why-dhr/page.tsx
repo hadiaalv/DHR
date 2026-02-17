@@ -406,14 +406,14 @@ It’s no surprise that Dubai and the UAE have become the top destinations for g
                   href="/contact-us"
                   className="about-btn-dark inline-block bg-gray-900 text-white px-8 py-3 rounded-full font-semibold shadow-md"
                 >
-                  Start a Conversation
+                  Learn More
                 </a>
-                <a
+                {/* <a
                   href="/buy"
                   className="about-btn-outline inline-block border-2 border-gray-900 text-gray-900 px-8 py-3 rounded-full font-semibold"
                 >
                   Explore Properties
-                </a>
+                </a> */}
               </div>
             </div>
           </div>
