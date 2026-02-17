@@ -31,33 +31,27 @@ export default function ContactUsPage() {
     <div className="min-h-screen bg-white">
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-800 via-slate-700 to-slate-600">
+      <section className="relative overflow-hidden bg-linear-to-b from-white to-gray-50">
         {/* Background image with overlay */}
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-50"
+          className="absolute inset-0 bg-cover bg-center opacity-15 mix-blend-multiply"
           style={{ backgroundImage: "url('/images/hero.jpg')" }}
         />
-        
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/60" />
-
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/70" />
 
         {/* Content */}
         <div className="relative z-10 flex h-96 flex-col items-center justify-center text-center px-6">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4">
             Contact Us
           </h1>
-          <p className="text-xl md:text-2xl text-gray-200 max-w-3xl">
+          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl">
             Get in touch with our team. We're here to help you find your perfect property.
           </p>
           
           {/* Breadcrumb */}
-          <div className="flex items-center justify-center gap-2 mt-6 text-gray-300">
-            <a href="/" className="hover:text-white transition-colors">Home</a>
+          <div className="flex items-center justify-center gap-2 mt-6 text-gray-600">
+            <a href="/" className="hover:text-gray-900 transition-colors">Home</a>
             <span>›</span>
-            <span className="text-white">Contact Us</span>
+            <span className="text-gray-900">Contact Us</span>
           </div>
         </div>
       </section>
@@ -149,7 +143,7 @@ export default function ContactUsPage() {
                 <div className="flex justify-center pt-2">
                   <button
                     type="submit"
-                    className="bg-black text-white rounded-lg px-12 py-3 font-semibold hover:bg-gray-800 transition-colors text-lg"
+                    className="bg-emerald-600 text-white rounded-lg px-12 py-3 font-semibold hover:bg-emerald-700 transition-colors text-lg shadow-lg shadow-emerald-600/20"
                   >
                     Send Now
                   </button>

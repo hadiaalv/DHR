@@ -53,7 +53,7 @@ export default function Home() {
               team.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
-              <button className="rounded-full bg-gray-900 px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-gray-900/15 transition hover:-translate-y-0.5 hover:bg-gray-800">
+              <button className="rounded-full bg-emerald-600 px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-600/20 transition hover:-translate-y-0.5 hover:bg-emerald-700">
                 View all properties
               </button>
               <button className="rounded-full border border-gray-300 px-7 py-3 text-sm font-semibold text-gray-800 hover:border-gray-400 hover:bg-white">
@@ -178,7 +178,7 @@ export default function Home() {
                 alt="Why Choose Us" 
                 className="rounded-2xl shadow-2xl grayscale"
               />
-              <div className="absolute -bottom-6 -left-6 bg-gray-900 text-white p-6 rounded-xl shadow-xl">
+              <div className="absolute -bottom-6 -left-6 rounded-xl border border-gray-200 bg-white/90 p-6 text-gray-900 shadow-xl backdrop-blur">
                 <div className="text-4xl font-bold">15+</div>
                 <div className="text-sm">Years of Excellence</div>
               </div>
@@ -188,21 +188,21 @@ export default function Home() {
       </section>
 
       {/* Call to Action */}
-      <section className="bg-gray-900 text-white text-center py-16">
+      <section className="bg-linear-to-b from-white to-gray-50 text-gray-900 text-center py-16">
         <div className="container mx-auto px-6">
           <div className="mx-auto max-w-3xl">
             <h2 className="text-3xl font-bold md:text-4xl">
               Ready to find your next address in Dubai?
             </h2>
-            <p className="mt-4 text-lg text-gray-300">
+            <p className="mt-4 text-lg text-gray-600">
               Share your preferences and receive a hand‑picked shortlist of properties within 24 hours,
               curated by our senior advisors.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <button className="rounded-full bg-white px-8 py-4 text-sm font-semibold text-gray-900 shadow-lg shadow-white/20 transition hover:-translate-y-0.5 hover:bg-gray-100">
+              <button className="rounded-full bg-emerald-600 px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-emerald-600/20 transition hover:-translate-y-0.5 hover:bg-emerald-700">
                 Get a personalized shortlist
               </button>
-              <button className="rounded-full border border-gray-500 bg-transparent px-8 py-4 text-sm font-semibold text-white hover:border-white hover:bg-white/5">
+              <button className="rounded-full border border-gray-300 bg-white px-8 py-4 text-sm font-semibold text-gray-900 hover:border-gray-400 hover:bg-gray-50">
                 Book a consultation call
               </button>
             </div>
