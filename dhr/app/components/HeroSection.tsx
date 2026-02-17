@@ -27,15 +27,27 @@ export default function HeroSection() {
 
   return (
     <section className="relative overflow-hidden bg-white text-gray-900">
-      {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center scale-105 transform-gpu"
-        style={{ backgroundImage: "url('/images/hero.jpg')" }}
-      />
+      {/* Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover scale-105 transform-gpu"
+      >
+        <source
+          src="/videos/horizontal/Al Habtoor Tower - Al Habtoor City_2.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
 
-      {/* Overlays */}
-      <div className="absolute inset-0 bg-linear-to-b from-white/95 via-white/85 to-gray-50/95" />
-      <div className="pointer-events-none absolute inset-0 opacity-60 mix-blend-multiply bg-radial from-emerald-200/30 via-transparent to-white" />
+      {/* Black transparency overlay */}
+      <div className="absolute inset-0 bg-black/40" />
+
+      {/* Gradient & radial overlays */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/75 to-gray-50/90 mix-blend-overlay" />
+      <div className="pointer-events-none absolute inset-0 opacity-60 mix-blend-multiply bg-[radial-gradient(circle_at_center,_rgba(16,185,129,0.2),_transparent_60%)]" />
 
       {/* Content */}
       <div className="relative z-10 mx-auto flex h-[620px] max-w-5xl flex-col items-center justify-center px-6 text-center">
@@ -46,29 +58,29 @@ export default function HeroSection() {
         </span>
 
         {/* Main heading */}
-        <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight text-gray-800 md:text-6xl md:leading-[1.05]">
+        <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight text-gray-100 md:text-6xl md:leading-[1.05]">
           Luxury, transparent, and fast-moving real estate services in Dubai.
         </h1>
 
         {/* CTA Cards */}
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <button className="rounded-xl border border-gray-200 bg-white px-6 py-4 shadow-sm transition hover:shadow-md">
+          <button className="rounded-xl border border-gray-200 bg-white/90 px-6 py-4 shadow-sm transition hover:shadow-md">
             <div className="text-xs text-gray-500">For</div>
             <div className="text-lg font-semibold text-gray-800">Buy</div>
           </button>
 
-          <button className="rounded-xl border border-gray-200 bg-white px-6 py-4 shadow-sm transition hover:shadow-md">
+          <button className="rounded-xl border border-gray-200 bg-white/90 px-6 py-4 shadow-sm transition hover:shadow-md">
             <div className="text-xs text-gray-500">For</div>
             <div className="text-lg font-semibold text-gray-800">Rent</div>
           </button>
 
-          <button className="rounded-xl border border-gray-200 bg-white px-6 py-4 shadow-sm transition hover:shadow-md">
+          <button className="rounded-xl border border-gray-200 bg-white/90 px-6 py-4 shadow-sm transition hover:shadow-md">
             <div className="text-xs text-gray-500">For</div>
             <div className="text-lg font-semibold text-gray-800">Agents</div>
           </button>
         </div>
 
-        {/* Search Bar (unchanged) */}
+        {/* Search Bar */}
         <div className="mt-10 w-full max-w-3xl rounded-2xl border border-gray-200/80 bg-white/80 p-4 shadow-[0_18px_60px_rgba(15,23,42,0.10)] backdrop-blur-xl">
           <div className="mb-3 flex items-center justify-between text-xs text-gray-600">
             <span className="inline-flex items-center gap-1">
@@ -123,7 +135,7 @@ export default function HeroSection() {
           </div>
 
           {resultText && (
-            <div className="mt-4 text-xs text-gray-600">
+            <div className="mt-4 text-xs text-gray-100">
               {resultText}
             </div>
           )}
