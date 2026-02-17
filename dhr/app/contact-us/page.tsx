@@ -39,8 +39,8 @@ export default function ContactUsPage() {
         />
 
         {/* Content */}
-        <div className="relative z-10 flex h-96 flex-col items-center justify-center text-center px-6">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4">
+        <div className="relative z-10 flex h-120 flex-col items-center justify-center text-center px-6">
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
             Contact Us
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 max-w-3xl">
@@ -193,10 +193,36 @@ export default function ContactUsPage() {
           </div>
 
           {/* Map Section */}
-          <div className="mt-16 rounded-lg overflow-hidden h-96 border border-gray-300 shadow-lg">
+          <div className="mt-16 relative rounded-lg overflow-hidden h-96 border border-gray-300 shadow-lg">
+            {/* Location Info Card — made smaller with reduced padding, font sizes, and width */}
+            <div className="absolute top-3 left-3 z-10 bg-white rounded-lg shadow-lg p-3 w-56 max-w-xs">
+              <h3 className="text-base font-bold text-gray-900 mb-1">Burj Khalifa</h3>
+              <p className="text-xs text-gray-700 mb-2 leading-relaxed">
+                1 Sheikh Mohammed bin Rashid Blvd - Downtown Dubai - UAE
+              </p>
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=Burj+Khalifa,Dubai,UAE&destination_place_id=ChIJC8MO6O9DXz4RKXFDgfhIDKA"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 mb-2 text-blue-600 hover:text-blue-800 transition-colors"
+              >
+                <span className="text-xs font-semibold">Directions</span>
+                <span className="text-gray-400 text-xs">›</span>
+              </a>
+              <div className="flex items-center gap-1">
+                <span className="text-sm font-bold text-gray-900">4.7</span>
+                <div className="flex gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className="text-yellow-400 text-xs">★</span>
+                  ))}
+                </div>
+              </div>
+              <p className="text-xs text-gray-600">169,842 reviews</p>
+            </div>
+            
             <iframe
               className="w-full h-full"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.2346089537476!2d55.27056892340154!3d25.190389877101437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6f8c0000001%3A0x0!2sBay%20Gate%20Tower%2C%20Business%20Bay%2C%20Dubai!5e0!3m2!1sen!2sae!4v1702000000000"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3612.176573064328!2d55.27427631111111!3d25.197210288888886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6f8c0000001%3A0x0!2sBurj%20Khalifa!5e0!3m2!1sen!2sae!4v1702000000000"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
