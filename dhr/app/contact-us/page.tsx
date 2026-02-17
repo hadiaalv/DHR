@@ -31,27 +31,33 @@ export default function ContactUsPage() {
     <div className="min-h-screen bg-white">
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-linear-to-b from-white to-gray-50">
+      <section className="relative overflow-hidden bg-gradient-to-b from-slate-800 via-slate-700 to-slate-600">
         {/* Background image with overlay */}
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-15 mix-blend-multiply"
+          className="absolute inset-0 bg-cover bg-center opacity-50"
           style={{ backgroundImage: "url('/images/hero.jpg')" }}
         />
+        
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/60" />
+
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/70" />
 
         {/* Content */}
         <div className="relative z-10 flex h-120 flex-col items-center justify-center text-center px-6">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
             Contact Us
           </h1>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl">
+          <p className="text-xl md:text-2xl text-gray-200 max-w-3xl">
             Get in touch with our team. We're here to help you find your perfect property.
           </p>
           
           {/* Breadcrumb */}
-          <div className="flex items-center justify-center gap-2 mt-6 text-gray-600">
-            <a href="/" className="hover:text-gray-900 transition-colors">Home</a>
+          <div className="flex items-center justify-center gap-2 mt-6 text-gray-300">
+            <a href="/" className="hover:text-white transition-colors">Home</a>
             <span>›</span>
-            <span className="text-gray-900">Contact Us</span>
+            <span className="text-white">Contact Us</span>
           </div>
         </div>
       </section>
@@ -62,7 +68,7 @@ export default function ContactUsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Left Column - Contact Form */}
             <div>
-              <p className="text-amber-500 font-semibold text-sm md:text-base mb-2">Get In Touch</p>
+              <p className="text-black font-semibold text-sm md:text-base mb-2">Get In Touch</p>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">Send us a Message</h2>
 
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -74,7 +80,7 @@ export default function ContactUsPage() {
                     placeholder="Your Name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full bg-white border border-gray-300 rounded-lg px-6 py-4 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all"
+                    className="w-full bg-white border border-gray-300 rounded-lg px-6 py-4 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-700 transition-all"
                     required
                   />
                   <input
@@ -83,7 +89,7 @@ export default function ContactUsPage() {
                     placeholder="Your Phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full bg-white border border-gray-300 rounded-lg px-6 py-4 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all"
+                    className="w-full bg-white border border-gray-300 rounded-lg px-6 py-4 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-700 transition-all"
                   />
                 </div>
 
@@ -95,7 +101,7 @@ export default function ContactUsPage() {
                     placeholder="Email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full bg-white border border-gray-300 rounded-lg px-6 py-4 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all"
+                    className="w-full bg-white border border-gray-300 rounded-lg px-6 py-4 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-700 transition-all"
                     required
                   />
                   <input
@@ -104,7 +110,7 @@ export default function ContactUsPage() {
                     placeholder="Subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full bg-white border border-gray-300 rounded-lg px-6 py-4 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all"
+                    className="w-full bg-white border border-gray-300 rounded-lg px-6 py-4 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-700 transition-all"
                   />
                 </div>
 
@@ -115,7 +121,7 @@ export default function ContactUsPage() {
                   value={formData.message}
                   onChange={handleChange}
                   rows={5}
-                  className="w-full bg-white border border-gray-300 rounded-lg px-6 py-4 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all resize-none"
+                  className="w-full bg-white border border-gray-300 rounded-lg px-6 py-4 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-700 transition-all resize-none"
                   required
                 ></textarea>
 
@@ -126,7 +132,7 @@ export default function ContactUsPage() {
                     id="captcha"
                     checked={isCaptchaChecked}
                     onChange={(e) => setIsCaptchaChecked(e.target.checked)}
-                    className="w-5 h-5 text-amber-500 border-gray-300 rounded focus:ring-2 focus:ring-amber-400 cursor-pointer"
+                    className="w-5 h-5 text-black border-gray-300 rounded focus:ring-2 focus:ring-gray-700 cursor-pointer"
                     required
                   />
                   <label htmlFor="captcha" className="text-gray-700 font-medium cursor-pointer select-none">
@@ -143,7 +149,7 @@ export default function ContactUsPage() {
                 <div className="flex justify-center pt-2">
                   <button
                     type="submit"
-                    className="bg-emerald-600 text-white rounded-lg px-12 py-3 font-semibold hover:bg-emerald-700 transition-colors text-lg shadow-lg shadow-emerald-600/20"
+                    className="bg-black text-white rounded-lg px-12 py-3 font-semibold hover:bg-gray-800 transition-colors text-lg"
                   >
                     Send Now
                   </button>
@@ -154,7 +160,7 @@ export default function ContactUsPage() {
             {/* Right Column - Contact Info */}
             <div className="space-y-8">
               <div>
-                <p className="text-amber-500 font-semibold text-sm md:text-base mb-2">Get In Touch</p>
+                <p className="text-black font-semibold text-sm md:text-base mb-2">Get In Touch</p>
                 <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">Contact Info</h2>
               </div>
 
@@ -163,19 +169,19 @@ export default function ContactUsPage() {
                 <div className="border border-gray-300 rounded-lg p-8 shadow-md hover:shadow-lg transition-shadow">
                   <h3 className="text-2xl font-bold text-gray-900 mb-6">Emails</h3>
                   <div className="space-y-4 mb-8">
-                    <a href="mailto:info@dreamheavenrealty.com" className="flex items-center gap-3 hover:text-amber-500 transition-colors">
-                      <span className="text-amber-500 text-2xl">✉</span>
+                    <a href="mailto:info@dreamheavenrealty.com" className="flex items-center gap-3 hover:text-black transition-colors">
+                      <span className="text-black text-2xl">✉</span>
                       <span className="text-gray-900 font-medium">info@dreamheavenrealty.com</span>
                     </a>
-                    <a href="mailto:mansoor@dreamheavenrealty.com" className="flex items-center gap-3 hover:text-amber-500 transition-colors">
-                      <span className="text-amber-500 text-2xl">✉</span>
+                    <a href="mailto:mansoor@dreamheavenrealty.com" className="flex items-center gap-3 hover:text-black transition-colors">
+                      <span className="text-black text-2xl">✉</span>
                       <span className="text-gray-900 font-medium">mansoor@dreamheavenrealty.com</span>
                     </a>
                   </div>
 
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">Phone / WhatsApp:</h3>
-                  <a href="tel:+971561694881" className="flex items-center gap-3 hover:text-amber-500 transition-colors">
-                    <span className="text-amber-500 text-2xl">📱</span>
+                  <a href="tel:+971561694881" className="flex items-center gap-3 hover:text-black transition-colors">
+                    <span className="text-black text-2xl">📱</span>
                     <span className="text-gray-900 font-medium">+971 56 169 4881</span>
                   </a>
                 </div>
@@ -184,7 +190,7 @@ export default function ContactUsPage() {
                 <div className="border border-gray-300 rounded-lg p-8 shadow-md hover:shadow-lg transition-shadow">
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">Business Hours:</h3>
                   <div className="flex items-center gap-3">
-                    <span className="text-amber-500 text-3xl">🕐</span>
+                    <span className="text-black text-3xl">🕐</span>
                     <p className="text-gray-900 text-lg font-medium">We are available 24/7</p>
                   </div>
                 </div>
