@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 interface BlogPost {
   id: number;
@@ -38,15 +38,29 @@ const blogPosts: BlogPost[] = [
   },
 ];
 
-function BlogCard({ post }: { post: BlogPost }) {
+/* ── fires when element enters viewport ── */
+function useInView(threshold = 0.15) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+      { threshold }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return { ref, visible };
+}
+
+function BlogCard({ post, direction, delay }: { post: BlogPost; direction: "left" | "right"; delay: number }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = useState(true);
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  const togglePlay = () => {
-    if (!videoRef.current) return;
-    isPlaying ? videoRef.current.pause() : videoRef.current.play();
-  };
+  const { ref, visible } = useInView();
 
   const toggleMute = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -55,43 +69,41 @@ function BlogCard({ post }: { post: BlogPost }) {
     setIsMuted(!isMuted);
   };
 
-  return (
-    <div className="border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 bg-white flex flex-col">
+  const slideFrom = direction === "left" ? "translateX(-56px)" : "translateX(56px)";
 
-      {/* Video — 16:9 landscape horizontal */}
+  return (
+    <div
+      ref={ref}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateX(0) translateY(0)" : `${slideFrom} translateY(24px)`,
+        transition: `opacity 0.7s cubic-bezier(.22,1,.36,1) ${delay}ms, transform 0.7s cubic-bezier(.22,1,.36,1) ${delay}ms`,
+      }}
+      className="border border-gray-200 rounded-xl overflow-hidden shadow-sm bg-white flex flex-col
+                 hover:shadow-xl hover:-translate-y-1.5 hover:scale-[1.015]
+                 transition-[box-shadow,transform] duration-300"
+    >
+      {/* Video — 16:9 */}
       <div
-        className="relative w-full overflow-hidden bg-black cursor-pointer"
+        className="relative w-full overflow-hidden bg-black group"
         style={{ aspectRatio: "16 / 9" }}
-        onClick={togglePlay}
       >
         <video
           ref={videoRef}
           src={post.video}
           poster={post.image}
           muted={isMuted}
+          autoPlay
           loop
           playsInline
-          preload="metadata"
-          className="w-full h-full object-cover"
-          onPlay={() => setIsPlaying(true)}
-          onPause={() => setIsPlaying(false)}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
 
         {/* Category badge */}
-        <span className="absolute top-3 left-3 bg-white/90 text-gray-800 text-xs font-semibold px-2.5 py-1 rounded-full z-10 pointer-events-none">
+        <span className="absolute top-3 left-3 bg-white/90 text-gray-800 text-xs font-semibold px-2.5 py-1 rounded-full z-10 pointer-events-none
+                         transition-transform duration-300 group-hover:scale-105">
           {post.category}
         </span>
-
-        {/* Play overlay */}
-        {!isPlaying && (
-          <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-            <div className="bg-black/40 rounded-full w-14 h-14 flex items-center justify-center backdrop-blur-sm">
-              <svg className="w-6 h-6 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        )}
 
         {/* Mute button */}
         <button
@@ -118,7 +130,8 @@ function BlogCard({ post }: { post: BlogPost }) {
         <p className="text-gray-500 text-sm leading-relaxed mb-4 flex-1">{post.excerpt}</p>
         <a
           href={post.href}
-          className="inline-flex items-center gap-1 text-xs font-bold text-gray-900 uppercase tracking-wide hover:text-gray-500 transition-colors"
+          className="inline-flex items-center gap-1 text-xs font-bold text-gray-900 uppercase tracking-wide
+                     hover:text-gray-500 hover:gap-2 transition-all duration-200"
         >
           Read More <span>»</span>
         </a>
@@ -127,27 +140,83 @@ function BlogCard({ post }: { post: BlogPost }) {
   );
 }
 
+/* ── Hero heading words slide in one by one ── */
+function AnimatedHeroText() {
+  const words = ["News", "&", "Articles"];
+  return (
+    <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 flex flex-wrap justify-center gap-x-4">
+      {words.map((word, i) => (
+        <span
+          key={i}
+          style={{
+            display: "inline-block",
+            opacity: 0,
+            transform: "translateY(28px)",
+            animation: `heroWordIn 0.65s cubic-bezier(.22,1,.36,1) ${i * 120 + 200}ms forwards`,
+          }}
+        >
+          {word}
+        </span>
+      ))}
+    </h1>
+  );
+}
+
 export default function BlogPage() {
+  const { ref: subtitleRef, visible: subtitleVisible } = useInView(0.1);
+  const { ref: breadcrumbRef, visible: breadcrumbVisible } = useInView(0.1);
+
   return (
     <div className="min-h-screen bg-white">
 
-      {/* Hero */}
+      <style>{`
+        @keyframes heroWordIn {
+          from { opacity: 0; transform: translateY(28px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes overlayFadeIn {
+          from { opacity: 0; }
+          to   { opacity: 1; }
+        }
+      `}</style>
+
+      {/* ── Hero ── */}
       <section className="relative overflow-hidden bg-gradient-to-b from-slate-800 via-slate-700 to-slate-600">
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-50"
-          style={{ backgroundImage: "url('/images/hero.jpg')" }}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: "url('/images/hero.jpg')",
+            opacity: 0,
+            animation: "overlayFadeIn 1.2s ease 0.1s forwards",
+          }}
         />
         <div className="absolute inset-0 bg-black/60" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/70" />
 
         <div className="relative z-10 flex h-screen flex-col items-center justify-center text-center px-6">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">
-            News &amp; Articles
-          </h1>
-          <p className="text-lg sm:text-xl text-gray-200 max-w-2xl">
+          <AnimatedHeroText />
+
+          <p
+            ref={subtitleRef}
+            style={{
+              opacity: subtitleVisible ? 1 : 0,
+              transform: subtitleVisible ? "translateY(0)" : "translateY(18px)",
+              transition: "opacity 0.65s cubic-bezier(.22,1,.36,1) 0.55s, transform 0.65s cubic-bezier(.22,1,.36,1) 0.55s",
+            }}
+            className="text-lg sm:text-xl text-gray-200 max-w-2xl"
+          >
             The latest insights, market updates, and stories from the world of real estate.
           </p>
-          <div className="flex items-center justify-center gap-2 mt-6 text-gray-300 text-sm">
+
+          <div
+            ref={breadcrumbRef}
+            style={{
+              opacity: breadcrumbVisible ? 1 : 0,
+              transform: breadcrumbVisible ? "translateY(0)" : "translateY(12px)",
+              transition: "opacity 0.55s ease 0.75s, transform 0.55s ease 0.75s",
+            }}
+            className="flex items-center justify-center gap-2 mt-6 text-gray-300 text-sm"
+          >
             <a href="/" className="hover:text-white transition-colors">Home</a>
             <span>›</span>
             <span className="text-white">News &amp; Articles</span>
@@ -155,15 +224,19 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Posts */}
+      {/* ── Posts ── */}
       <section className="py-12 md:py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {blogPosts.map((post) => (
-              <BlogCard key={post.id} post={post} />
+            {blogPosts.map((post, i) => (
+              <BlogCard
+                key={post.id}
+                post={post}
+                direction={i % 2 === 0 ? "left" : "right"}
+                delay={i * 120}
+              />
             ))}
           </div>
-
         </div>
       </section>
     </div>
