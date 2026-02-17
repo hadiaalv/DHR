@@ -73,58 +73,104 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="bg-gray-50 py-16">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Comprehensive real estate solutions tailored to your needs
-            </p>
-          </div>
+ <section
+        id="services"
+        className="relative py-20 md:py-28 overflow-hidden"
+        style={{
+          backgroundImage: "url('/images/hero.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        {/* Dark overlay */}
+        <div
+          className="absolute inset-0"
+          style={{ background: "rgba(5, 10, 25, 0.72)" }}
+        />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Service 1 */}
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 text-center border border-gray-200">
-              <div className="bg-gray-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold mb-3">Buy Property</h3>
-              <p className="text-gray-600">Find your dream home from our extensive portfolio of premium properties</p>
+        <div className="relative z-10 container mx-auto px-6">
+          {/* Heading */}
+          <h2
+            className="text-3xl md:text-4xl lg:text-[2.6rem] font-bold text-white text-center mb-14"
+            style={{ fontFamily: "'Playfair Display', serif" }}
+          >
+            Why the UAE is Becoming a Global Wealth Magnet
+          </h2>
+
+          {/* Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+            {/* Card 1 */}
+            <div
+              className="rounded-2xl p-8 text-center flex flex-col"
+              style={{
+                background: "rgba(160, 170, 190, 0.18)",
+                backdropFilter: "blur(12px)",
+                border: "1px solid rgba(255,255,255,0.14)",
+              }}
+            >
+              <h3
+                className="text-white font-bold text-sm uppercase tracking-widest mb-6"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+              >
+                Family, Infrastructure,
+                <br />
+                and Long-Term Vision
+              </h3>
+              <p className="text-gray-200 text-sm leading-relaxed">
+                The UAE supports family-owned businesses, prioritizes
+                generational prosperity, and invests heavily in infrastructure,
+                positioning itself for sustainable growth.
+              </p>
             </div>
 
-            {/* Service 2 */}
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 text-center border border-gray-200">
-              <div className="bg-gray-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold mb-3">Sell Property</h3>
-              <p className="text-gray-600">Get the best value for your property with our expert marketing strategies</p>
+            {/* Card 2 */}
+            <div
+              className="rounded-2xl p-8 text-center flex flex-col"
+              style={{
+                background: "rgba(160, 170, 190, 0.18)",
+                backdropFilter: "blur(12px)",
+                border: "1px solid rgba(255,255,255,0.14)",
+              }}
+            >
+              <h3
+                className="text-white font-bold text-sm uppercase tracking-widest mb-6"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+              >
+                Regulated and Digitally
+                <br />
+                Advanced Market
+              </h3>
+              <p className="text-gray-200 text-sm leading-relaxed">
+                The UAE real estate market benefits from mature regulations,
+                digital registration, and investor protection.
+              </p>
             </div>
 
-            {/* Service 3 */}
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 text-center border border-gray-200">
-              <div className="bg-gray-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold mb-3">Rent Property</h3>
-              <p className="text-gray-600">Flexible rental options for residential and commercial properties</p>
-            </div>
-
-            {/* Service 4 */}
-            <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 text-center border border-gray-200">
-              <div className="bg-gray-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold mb-3">Property Management</h3>
-              <p className="text-gray-600">Complete property management services for landlords and investors</p>
+            {/* Card 3 */}
+            <div
+              className="rounded-2xl p-8 text-center flex flex-col"
+              style={{
+                background: "rgba(160, 170, 190, 0.18)",
+                backdropFilter: "blur(12px)",
+                border: "1px solid rgba(255,255,255,0.14)",
+              }}
+            >
+              <h3
+                className="text-white font-bold text-sm uppercase tracking-widest mb-6"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+              >
+                Competitive Value in
+                <br />
+                Global Terms
+              </h3>
+              <p className="text-gray-200 text-sm leading-relaxed">
+                Dubai offers some of the most accessible luxury real estate
+                worldwide.
+              </p>
+              <p className="text-gray-200 text-sm leading-relaxed mt-4">
+                $1 million secures 980 sq.ft. in Dubai, compared to 355 sq.ft.
+                in London or 172 sq.ft. in Monaco.
+              </p>
             </div>
           </div>
         </div>
