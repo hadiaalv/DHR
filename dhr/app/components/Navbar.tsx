@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
-// Keep sitemap exactly as before
 const navItems = [
   { href: "/about-us", label: "About Us" },
   { href: "/why-dhr", label: "Why DHR" },
@@ -30,9 +29,7 @@ export default function Navbar() {
   }, []);
 
   const isActive = (href: string) =>
-    href === "/"
-      ? pathname === "/"
-      : pathname.startsWith(href);
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <>
@@ -44,7 +41,9 @@ export default function Navbar() {
             : "bg-[#F5F5F0]/80"
         }`}
       >
-        <div className="container mx-auto flex items-center justify-between px-4 py-3 md:px-6">
+        {/* Slightly wider container */}
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3">
+          
           {/* Left: Menu trigger */}
           <button
             type="button"
@@ -59,14 +58,14 @@ export default function Navbar() {
             <span className="hidden sm:inline">Menu</span>
           </button>
 
-          {/* Center: Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="relative h-24 w-80 md:h-28 md:w-[450px]">
+          {/* Center: Larger logo */}
+          <Link href="/" className="absolute left-1/2 -translate-x-1/2">
+            <div className="relative h-20 w-64 md:h-24 md:w-80">
               <Image
                 src="/images/logo.png"
                 alt="Dream Heaven Realty"
                 fill
-                sizes="450px"
+                sizes="320px"
                 className="object-contain"
                 priority
                 unoptimized
@@ -74,11 +73,11 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Right: Primary CTA (same route as before) */}
+          {/* Right CTA */}
           <div className="flex items-center gap-3 text-xs sm:text-sm">
             <Link
               href="/earn-with-dhr"
-              className="inline-flex items-center gap-2 rounded-full bg-gray-900 px-4 py-1.5 font-semibold text-white shadow-md hover:bg-gray-800 transition-colors"
+              className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-1.5 font-semibold text-white shadow-md shadow-emerald-600/20 hover:bg-emerald-700 transition-colors"
             >
               <span>Earn With DHR</span>
             </Link>
@@ -89,32 +88,38 @@ export default function Navbar() {
       {/* Full-screen overlay menu */}
       {menuOpen && (
         <div className="fixed inset-0 z-50 bg-[#F5F5F0] text-gray-900">
-          <div className="flex items-center justify-between border-b border-gray-200 px-4 py-4 md:px-6">
+          
+          {/* Menu header */}
+          <div className="flex items-center justify-between border-b border-gray-200 px-6 py-5">
+            
+            {/* Left-aligned bigger logo */}
             <Link
               href="/"
-              className="flex items-center gap-2"
+              className="flex items-center"
               onClick={() => setMenuOpen(false)}
             >
-              <div className="relative h-24 w-80 md:h-28 md:w-[450px]">
+              <div className="relative h-28 w-96 md:h-32 md:w-[420px]">
                 <Image
                   src="/images/logo.png"
                   alt="Dream Heaven Realty"
                   fill
-                  sizes="450px"
+                  sizes="420px"
                   className="object-contain"
                   unoptimized
                 />
               </div>
             </Link>
+
+            {/* Close button */}
             <button
               type="button"
               onClick={() => setMenuOpen(false)}
               aria-label="Close menu"
-              className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 hover:bg-gray-100 transition-colors"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 hover:bg-gray-100 transition-colors"
             >
               <span className="sr-only">Close</span>
               <svg
-                className="h-4 w-4 text-gray-800"
+                className="h-5 w-5 text-gray-800"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -129,20 +134,21 @@ export default function Navbar() {
             </button>
           </div>
 
-          <nav className="px-6 py-8 md:px-10">
-            <ul className="space-y-4 text-lg md:text-xl">
+          {/* Menu links */}
+          <nav className="px-8 py-10">
+            <ul className="space-y-6 text-xl md:text-2xl">
               {navItems.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
                     onClick={() => setMenuOpen(false)}
-                    className={`flex items-center justify-between border-b border-gray-200 pb-3 text-gray-700 hover:text-gray-900 transition-colors ${
+                    className={`flex items-center justify-between border-b border-gray-200 pb-4 text-gray-700 hover:text-gray-900 transition-colors ${
                       isActive(item.href) ? "font-semibold text-gray-900" : ""
                     }`}
                   >
                     <span>{item.label}</span>
                     {isActive(item.href) && (
-                      <span className="h-1.5 w-1.5 rounded-full bg-gray-900" />
+                      <span className="h-2 w-2 rounded-full bg-gray-900" />
                     )}
                   </Link>
                 </li>

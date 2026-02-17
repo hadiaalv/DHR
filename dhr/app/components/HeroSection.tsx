@@ -26,83 +26,73 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gray-900 text-white">
-      {/* Background image with subtle parallax feel */}
+    <section className="relative overflow-hidden bg-white text-gray-900">
+      {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center scale-105 transform-gpu"
         style={{ backgroundImage: "url('/images/hero.jpg')" }}
       />
 
-      {/* Gradient & vignette overlays */}
-      <div className="absolute inset-0 bg-linear-to-b from-gray-900 via-gray-900/80 to-gray-900/95" />
-      <div className="pointer-events-none absolute inset-0 opacity-50 mix-blend-multiply bg-radial from-white/5 via-transparent to-gray-900" />
-
-      {/* Glow behind content */}
-      <div className="pointer-events-none absolute -inset-x-32 top-32 h-64 bg-linear-to-r from-white/10 via-white/20 to-transparent blur-3xl opacity-40" />
+      {/* Overlays */}
+      <div className="absolute inset-0 bg-linear-to-b from-white/95 via-white/85 to-gray-50/95" />
+      <div className="pointer-events-none absolute inset-0 opacity-60 mix-blend-multiply bg-radial from-emerald-200/30 via-transparent to-white" />
 
       {/* Content */}
       <div className="relative z-10 mx-auto flex h-[620px] max-w-5xl flex-col items-center justify-center px-6 text-center">
-        <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1 text-xs font-medium uppercase tracking-[0.2em] text-gray-200 backdrop-blur">
-          Curated Luxury • Dubai & Beyond
+        
+        {/* Badge */}
+        <span className="text-sm font-medium uppercase tracking-widest text-amber-500">
+          Welcome to DHR
         </span>
 
-        <h1 className="mt-6 text-4xl font-semibold leading-tight md:text-6xl md:leading-[1.05]">
-          <span className="block bg-linear-to-r from-white via-gray-100 to-gray-400 bg-clip-text text-transparent">
-            Find your dream
-          </span>
-          <span className="mt-1 block bg-linear-to-r from-gray-100 via-white to-gray-200 bg-clip-text text-transparent">
-            property with confidence.
-          </span>
+        {/* Main heading */}
+        <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight text-gray-800 md:text-6xl md:leading-[1.05]">
+          Luxury, transparent, and fast-moving real estate services in Dubai.
         </h1>
 
-        <p className="mt-5 max-w-2xl text-base text-gray-300 md:text-lg">
-          Experience a white‑glove real estate journey—from first viewing to final handover—with{" "}
-          <span className="font-semibold text-white">Dream Heaven Realty LLC</span>.
-        </p>
+        {/* CTA Cards */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <button className="rounded-xl border border-gray-200 bg-white px-6 py-4 shadow-sm transition hover:shadow-md">
+            <div className="text-xs text-gray-500">For</div>
+            <div className="text-lg font-semibold text-gray-800">Buy</div>
+          </button>
 
-        {/* Search Bar */}
-        <div className="mt-10 w-full max-w-3xl rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_18px_60px_rgba(0,0,0,0.7)] backdrop-blur-xl">
-          <div className="mb-3 flex items-center justify-between text-xs text-gray-300">
+          <button className="rounded-xl border border-gray-200 bg-white px-6 py-4 shadow-sm transition hover:shadow-md">
+            <div className="text-xs text-gray-500">For</div>
+            <div className="text-lg font-semibold text-gray-800">Rent</div>
+          </button>
+
+          <button className="rounded-xl border border-gray-200 bg-white px-6 py-4 shadow-sm transition hover:shadow-md">
+            <div className="text-xs text-gray-500">For</div>
+            <div className="text-lg font-semibold text-gray-800">Agents</div>
+          </button>
+        </div>
+
+        {/* Search Bar (unchanged) */}
+        <div className="mt-10 w-full max-w-3xl rounded-2xl border border-gray-200/80 bg-white/80 p-4 shadow-[0_18px_60px_rgba(15,23,42,0.10)] backdrop-blur-xl">
+          <div className="mb-3 flex items-center justify-between text-xs text-gray-600">
             <span className="inline-flex items-center gap-1">
               <span className="h-2 w-2 rounded-full bg-emerald-400" />
-              Live inventory updated in real‑time
+              Live inventory updated in real-time
             </span>
-            <span className="hidden md:inline text-[11px] text-gray-400">
+            <span className="hidden md:inline text-[11px] text-gray-500">
               Tip: Start with a community name (e.g. Dubai Marina)
             </span>
           </div>
 
           <div className="grid grid-cols-1 gap-3 md:grid-cols-[minmax(0,2fr)_minmax(0,1.2fr)_minmax(0,1.2fr)_auto]">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Location or community"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-                className="w-full rounded-xl border border-white/15 bg-gray-900/20 px-4 py-3 text-sm text-white placeholder:text-gray-400 focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/25"
-              />
-              <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500">
-                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                </svg>
-              </span>
-            </div>
+            <input
+              type="text"
+              placeholder="Location or community"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="w-full rounded-xl border border-gray-200 bg-white/90 px-4 py-3 text-sm"
+            />
 
             <select
               value={type}
               onChange={(e) => setType(e.target.value)}
-              className="w-full rounded-xl border border-white/15 bg-black/20 px-4 py-3 text-sm text-white focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/25"
+              className="w-full rounded-xl border border-gray-200 bg-white/90 px-4 py-3 text-sm"
             >
               <option value="">Property type</option>
               <option value="apartment">Apartment</option>
@@ -114,7 +104,7 @@ export default function HeroSection() {
             <select
               value={priceRange}
               onChange={(e) => setPriceRange(e.target.value)}
-              className="w-full rounded-xl border border-white/15 bg-black/20 px-4 py-3 text-sm text-white focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/25"
+              className="w-full rounded-xl border border-gray-200 bg-white/90 px-4 py-3 text-sm"
             >
               <option value="">Price range</option>
               <option value="0-500k">$0 - $500k</option>
@@ -126,59 +116,17 @@ export default function HeroSection() {
             <button
               type="button"
               onClick={handleSearch}
-              disabled={false}
-              className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-semibold text-gray-900 shadow-lg shadow-white/30 transition hover:-translate-y-0.5 hover:bg-gray-100 disabled:cursor-not-allowed disabled:bg-white/60 disabled:text-gray-500"
+              className="rounded-xl bg-emerald-600 px-6 py-3 text-sm font-semibold text-white"
             >
-              <svg
-                className="mr-2 h-4 w-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 21l-4.35-4.35M11 18a7 7 0 100-14 7 7 0 000 14z"
-                />
-              </svg>
               Search
             </button>
           </div>
 
           {resultText && (
-            <div className="mt-4 flex items-center justify-between gap-3 text-xs text-gray-200">
-              <div className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-2">
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/90 text-[10px] font-bold text-white">
-                  AI
-                </span>
-                <span className="text-[11px] md:text-xs">{resultText}</span>
-              </div>
-              <button
-                type="button"
-                onClick={() => setResultText(null)}
-                className="hidden text-[11px] text-gray-400 hover:text-gray-200 md:inline"
-              >
-                Clear
-              </button>
+            <div className="mt-4 text-xs text-gray-600">
+              {resultText}
             </div>
           )}
-        </div>
-
-        {/* Stats */}
-        <div className="mt-10 grid w-full max-w-2xl grid-cols-3 gap-6 text-left text-xs md:text-sm">
-          <div className="rounded-xl bg-white/5 px-4 py-3 backdrop-blur">
-            <div className="text-2xl font-bold text-white md:text-3xl">500+</div>
-            <div className="mt-1 text-gray-300">properties sold across prime communities</div>
-          </div>
-          <div className="rounded-xl bg-white/5 px-4 py-3 backdrop-blur">
-            <div className="text-2xl font-bold text-white md:text-3xl">1,000+</div>
-            <div className="mt-1 text-gray-300">clients guided through seamless transactions</div>
-          </div>
-          <div className="rounded-xl bg-white/5 px-4 py-3 backdrop-blur">
-            <div className="text-2xl font-bold text-white md:text-3xl">15+</div>
-            <div className="mt-1 text-gray-300">years shaping Dubai&apos;s real‑estate story</div>
-          </div>
         </div>
       </div>
     </section>
