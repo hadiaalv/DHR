@@ -125,6 +125,14 @@ export default function AgentsPage() {
           from { opacity: 0; }
           to   { opacity: 0.5; }
         }
+        @keyframes shimmer {
+          0%   { transform: translateX(-100%) skewX(-12deg); }
+          100% { transform: translateX(200%)  skewX(-12deg); }
+        }
+        @keyframes badgePulse {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(30,58,138,0.4); }
+          50%      { box-shadow: 0 0 0 10px rgba(30,58,138,0); }
+        }
 
         /* ── Offer icons spin in ── */
         .offer-icon {
@@ -143,47 +151,173 @@ export default function AgentsPage() {
 
         /* ── Benefit cards ── */
         .benefit-card {
-          transition: transform 0.35s cubic-bezier(.22,1,.36,1),
-                      box-shadow 0.35s ease,
-                      border-color 0.3s ease;
+          transition: transform 0.4s cubic-bezier(.22,1,.36,1),
+                      box-shadow 0.4s ease,
+                      border-color 0.3s ease,
+                      background 0.3s ease;
+          position: relative;
+          overflow: hidden;
         }
+        /* shimmer sweep on hover */
+        .benefit-card::after {
+          content: '';
+          position: absolute;
+          top: 0; left: 0;
+          width: 40%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+          transform: translateX(-100%) skewX(-12deg);
+          pointer-events: none;
+        }
+        .benefit-card:hover::after {
+          animation: shimmer 0.65s ease forwards;
+        }
+        /* top accent bar slides in */
+        .benefit-card::before {
+          content: '';
+          position: absolute;
+          top: 0; left: 0; right: 0;
+          height: 3px;
+          background: linear-gradient(90deg, #1e3a8a, #1e40af);
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.4s cubic-bezier(.22,1,.36,1);
+        }
+        .benefit-card:hover::before { transform: scaleX(1); }
         .benefit-card:hover {
-          transform: translateY(-8px) scale(1.02);
-          box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+          transform: translateY(-14px) scale(1.04);
+          box-shadow: 0 28px 56px rgba(30,58,138,0.15), 0 8px 20px rgba(0,0,0,0.08);
+          border-color: rgba(30,58,138,0.2);
+          background: #f5f7ff;
         }
         .benefit-card .icon-wrap {
-          transition: transform 0.4s cubic-bezier(.34,1.56,.64,1);
+          transition: transform 0.5s cubic-bezier(.34,1.56,.64,1),
+                      box-shadow 0.4s ease,
+                      background 0.35s ease;
         }
-        .benefit-card:hover .icon-wrap { transform: scale(1.15) rotate(5deg); }
+        .benefit-card:hover .icon-wrap {
+          transform: scale(1.22) rotate(15deg) translateY(-4px);
+          box-shadow: 0 10px 24px rgba(59,130,246,0.22);
+        }
+        /* icon bg shift on card hover */
+        .benefit-card:hover .icon-wrap.bg-blue-50   { background: #c7d2fe; }
+        .benefit-card:hover .icon-wrap.bg-green-50  { background: #bbf7d0; }
+        .benefit-card:hover .icon-wrap.bg-purple-50 { background: #e9d5ff; }
+        .benefit-card:hover .icon-wrap.bg-slate-50  { background: #e2e8f0; }
+        .benefit-card h3 {
+          transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .benefit-card:hover h3 {
+          color: #1e3a8a;
+          transform: translateY(-2px);
+        }
 
-        /* ── Step badges pulse ── */
+        /* ── Step cards — 3 round corners + 1 pointed (bottom-left) ── */
+        .step-card {
+          position: relative;
+          background: white;
+          border: 2px solid #e5e7eb;
+          border-radius: 0.75rem 0.75rem 0.75rem 0;
+          padding: 2.5rem 1.75rem 2rem;
+          text-align: center;
+          cursor: pointer;
+          transition:
+            transform   0.4s cubic-bezier(.22,1,.36,1),
+            box-shadow  0.4s ease,
+            border-color 0.35s ease,
+            background   0.35s ease;
+          overflow: hidden;
+        }
+        /* diagonal fill from bottom-left pointed corner */
+        .step-card::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(135deg, #0f1f5c 0%, #1e3a8a 55%, #1e40af 100%);
+          border-radius: inherit;
+          transform: scaleY(0);
+          transform-origin: bottom left;
+          transition: transform 0.45s cubic-bezier(.22,1,.36,1);
+          z-index: 0;
+        }
+        .step-card:hover::before { transform: scaleY(1); }
+        .step-card:hover {
+          transform: translateY(-12px) scale(1.04);
+          box-shadow: 0 24px 50px rgba(15,31,92,0.28), 0 6px 16px rgba(0,0,0,0.1);
+          border-color: #1e3a8a;
+        }
+        /* make sure text is above the fill */
+        .step-card > * { position: relative; z-index: 1; }
+
+        /* step number badge */
         .step-badge {
-          transition: transform 0.35s cubic-bezier(.34,1.56,.64,1),
-                      background 0.3s ease,
-                      box-shadow 0.3s ease;
+          width: 5rem; height: 5rem;
+          margin: 0 auto 1.5rem;
+          border-radius: 50%;
+          border: 3px solid #111827;
+          display: flex; align-items: center; justify-content: center;
+          transition:
+            transform   0.4s cubic-bezier(.34,1.56,.64,1),
+            background  0.35s ease,
+            border-color 0.35s ease,
+            box-shadow  0.35s ease;
         }
-        .step-badge:hover {
-          transform: scale(1.12);
-          background: #111827;
-          color: white;
-          box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        .step-badge span {
+          font-size: 1.75rem; font-weight: 800;
+          color: #111827;
+          transition: color 0.3s ease;
         }
+        .step-card:hover .step-badge {
+          transform: scale(1.15) rotate(-5deg);
+          background: white;
+          border-color: white;
+          box-shadow: 0 0 0 4px rgba(255,255,255,0.3);
+          animation: badgePulse 1.2s ease infinite;
+        }
+        .step-card:hover .step-badge span { color: #1e3a8a; }
+        .step-card .step-text {
+          color: #111827;
+          font-weight: 600;
+          font-size: 1.05rem;
+          line-height: 1.55;
+          transition: color 0.3s ease;
+        }
+        .step-card:hover .step-text { color: white; }
 
-        /* ── FAQ accordion ── */
+        /* ── FAQ accordion — smooth height via max-height ── */
         .faq-item {
           transition: transform 0.28s ease, box-shadow 0.28s ease;
         }
         .faq-item:hover { transform: translateX(4px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
-        .faq-chevron { transition: transform 0.3s cubic-bezier(.34,1.56,.64,1); }
-
-        /* ── Form inputs ── */
-        .form-input {
-          transition: border-color 0.25s ease,
-                      box-shadow 0.25s ease,
-                      transform 0.2s ease;
+        .faq-chevron {
+          transition: transform 0.45s cubic-bezier(.34,1.56,.64,1);
+          flex-shrink: 0;
         }
-        .form-input:focus { border-color: #111827; box-shadow: 0 0 0 3px rgba(17,24,39,0.08); transform: scale(1.005); }
-        .form-input:hover { border-color: #9ca3af; }
+        .faq-chevron.open { transform: rotate(90deg); }
+
+        .faq-answer {
+          max-height: 0;
+          overflow: hidden;
+          transition:
+            max-height 0.5s cubic-bezier(.22,1,.36,1),
+            opacity    0.4s ease,
+            padding    0.4s ease;
+          opacity: 0;
+          padding: 0 1.5rem;
+        }
+        .faq-answer.open {
+          max-height: 300px;
+          opacity: 1;
+          padding: 0 1.5rem 1.25rem;
+        }
+
+        /* ── Offer icons spin in ── */
+        /* ── Image hover ── */
+        .section-img {
+          transition: transform 0.5s cubic-bezier(.22,1,.36,1),
+                      box-shadow 0.5s ease;
+        }
+        .section-img:hover { transform: scale(1.03) rotate(-0.5deg); box-shadow: 0 32px 64px rgba(0,0,0,0.2); }
 
         /* ── Buttons ── */
         .btn-primary {
@@ -218,12 +352,14 @@ export default function AgentsPage() {
         .btn-yellow:hover::after { transform: translateX(100%); }
         .btn-yellow:active { transform: scale(0.97); }
 
-        /* ── Image hover ── */
-        .section-img {
-          transition: transform 0.5s cubic-bezier(.22,1,.36,1),
-                      box-shadow 0.5s ease;
+        /* ── Form inputs ── */
+        .form-input {
+          transition: border-color 0.25s ease,
+                      box-shadow 0.25s ease,
+                      transform 0.2s ease;
         }
-        .section-img:hover { transform: scale(1.03) rotate(-0.5deg); box-shadow: 0 32px 64px rgba(0,0,0,0.2); }
+        .form-input:focus { border-color: #111827; box-shadow: 0 0 0 3px rgba(17,24,39,0.08); transform: scale(1.005); }
+        .form-input:hover { border-color: #9ca3af; }
       `}</style>
 
       {/* ── Hero ── */}
@@ -267,13 +403,13 @@ export default function AgentsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
             <div ref={offerImgRef} style={slideStyle(offerImgV, "left")} className="order-2 lg:order-1">
-              <div className="section-img relative rounded-3xl overflow-hidden shadow-2xl">
+              <div className="section-img relative rounded-xl overflow-hidden shadow-2xl">
                 <img src="/images/agents-meeting.jpg" alt="DHR Agent Meeting" className="w-full h-auto object-cover" />
               </div>
             </div>
 
             <div ref={offerTextRef} style={slideStyle(offerTextV, "right", 100)} className="order-1 lg:order-2">
-              <p className="text-yellow-500 font-semibold text-sm md:text-base mb-2 uppercase tracking-widest">Our Agent Program</p>
+              <p className="text-black font-semibold text-sm md:text-base mb-2 uppercase tracking-widest">Our Agent Program</p>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">What we offer to agents</h2>
               <div className="space-y-6">
                 {offers.map((item, i) => (
@@ -298,7 +434,7 @@ export default function AgentsPage() {
                   </div>
                 ))}
               </div>
-              <button className="btn-primary mt-8 bg-black text-white px-8 py-3 rounded-full font-semibold cursor-pointer">
+              <button className="btn-primary mt-8 bg-black text-white px-8 py-3 rounded-md font-semibold cursor-pointer">
                 Read more
               </button>
             </div>
@@ -312,22 +448,22 @@ export default function AgentsPage() {
         <div className="container mx-auto px-6">
 
           <div ref={benHeadRef} style={slideStyle(benHeadV, "up")} className="text-center mb-12">
-            <p className="text-yellow-500 font-semibold text-sm md:text-base mb-2 uppercase tracking-widest">For Agents</p>
+            <p className="text-black font-semibold text-sm md:text-base mb-2 uppercase tracking-widest">For Agents</p>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900">Benefits We Provide</h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto mb-16">
             {[
-              { icon: "M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z", title: "Faster payouts", bg: "bg-blue-50", color: "text-blue-600" },
-              { icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6", title: "Access to inventory", bg: "bg-green-50", color: "text-green-600" },
-              { icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z", title: "Support system", bg: "bg-purple-50", color: "text-purple-600" },
-              { icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z", title: "Professional backend", bg: "bg-slate-50", color: "text-slate-700", border: true },
+              { icon: "M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z", title: "Faster payouts", bg: "bg-blue-50", color: "text-blue-800" },
+              { icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6", title: "Access to inventory", bg: "bg-green-50", color: "text-green-800" },
+              { icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z", title: "Support system", bg: "bg-purple-50", color: "text-purple-800" },
+              { icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z", title: "Professional backend", bg: "bg-slate-50", color: "text-slate-700" },
             ].map((item, i) => (
               <div
                 key={i}
                 ref={benRefs[i]}
                 style={slideStyle(benVisibles[i], "up", i * 100)}
-                className={`benefit-card bg-white rounded-2xl p-8 shadow-sm text-center cursor-pointer ${item.border ? "border-2 border-yellow-400" : ""}`}
+                className="benefit-card bg-white rounded-lg p-8 shadow-sm text-center cursor-pointer border border-gray-100"
               >
                 <div className={`icon-wrap w-20 h-20 mx-auto mb-6 ${item.bg} rounded-full flex items-center justify-center`}>
                   <svg className={`w-10 h-10 ${item.color}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -342,9 +478,9 @@ export default function AgentsPage() {
           <div ref={splitRef} style={slideStyle(splitV, "up")} className="text-center">
             <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Commission structure breakdown up to</h3>
             <p className="text-5xl md:text-6xl font-bold">
-              <span className="text-yellow-500">70%</span>
+              <span className="text-blue-900">70%</span>
               <span className="text-gray-900"> to agent, </span>
-              <span className="text-yellow-500">30%</span>
+              <span className="text-blue-900">30%</span>
               <span className="text-gray-900"> to company</span>
             </p>
           </div>
@@ -367,11 +503,16 @@ export default function AgentsPage() {
               "Sale closes — commission is split",
               "You get Up to 70% payout (advance option available where approved)",
             ].map((text, i) => (
-              <div key={i} ref={stepRefs[i]} style={slideStyle(stepVisibles[i], "up", i * 110)} className="text-center">
-                <div className="step-badge w-24 h-24 mx-auto mb-6 rounded-full border-4 border-gray-900 flex items-center justify-center cursor-pointer">
-                  <span className="text-4xl font-bold text-gray-900">{i + 1}</span>
+              <div
+                key={i}
+                ref={stepRefs[i]}
+                style={slideStyle(stepVisibles[i], "up", i * 110)}
+                className="step-card"
+              >
+                <div className="step-badge">
+                  <span>{i + 1}</span>
                 </div>
-                <p className="text-gray-900 font-semibold text-lg leading-relaxed">{text}</p>
+                <p className="step-text">{text}</p>
               </div>
             ))}
           </div>
@@ -384,27 +525,28 @@ export default function AgentsPage() {
         <div className="container mx-auto px-6 max-w-4xl">
 
           <div ref={faqHeadRef} style={slideStyle(faqHeadV, "up")} className="text-center mb-12">
-            <p className="text-yellow-500 font-semibold text-sm md:text-base mb-2 uppercase tracking-widest">FAQs</p>
+            <p className="text-black font-semibold text-sm md:text-base mb-2 uppercase tracking-widest">FAQs</p>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900">Most Popular Questions</h2>
           </div>
 
           <div ref={faqListRef} style={slideStyle(faqListV, "up", 150)} className="space-y-4">
             {faqs.map((faq, i) => (
-              <div key={i} className="faq-item bg-white rounded-lg shadow-sm overflow-hidden">
+              <div key={i} className="faq-item bg-white rounded-md shadow-sm overflow-hidden">
                 <button
                   onClick={() => toggleFaq(i)}
                   className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-gray-50 transition-colors cursor-pointer"
                 >
                   <span className="text-lg font-semibold text-gray-900 pr-4">{faq.question}</span>
-                  <svg className={`faq-chevron w-6 h-6 text-gray-900 flex-shrink-0 ${openFaq === i ? "rotate-90" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg
+                    className={`faq-chevron w-6 h-6 text-gray-900 ${openFaq === i ? "open" : ""}`}
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </button>
-                {openFaq === i && (
-                  <div className="px-6 pb-5 text-gray-600 leading-relaxed" style={{ animation: "fadeIn 0.3s ease" }}>
-                    {faq.answer}
-                  </div>
-                )}
+                <div className={`faq-answer ${openFaq === i ? "open" : ""}`}>
+                  <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -418,7 +560,7 @@ export default function AgentsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
 
             <div ref={partnerImgRef} style={slideStyle(partnerImgV, "left")}>
-              <div className="section-img relative rounded-3xl overflow-hidden shadow-2xl">
+              <div className="section-img relative rounded-xl overflow-hidden shadow-2xl">
                 <img src="/images/partner-team.jpg" alt="Become a Partner" className="w-full h-auto object-cover" />
               </div>
             </div>
@@ -428,13 +570,13 @@ export default function AgentsPage() {
               <form onSubmit={handleSubmit} className="space-y-5">
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <input type="text" name="fullName" placeholder="Full name" value={formData.fullName} onChange={handleChange} className="form-input w-full bg-gray-50 border border-gray-200 rounded-lg px-5 py-3.5 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-900" required />
-                  <input type="email" name="email" placeholder="email" value={formData.email} onChange={handleChange} className="form-input w-full bg-gray-50 border border-gray-200 rounded-lg px-5 py-3.5 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-900" required />
+                  <input type="text" name="fullName" placeholder="Full name" value={formData.fullName} onChange={handleChange} className="form-input w-full bg-gray-50 border border-gray-200 rounded-md px-5 py-3.5 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-900" required />
+                  <input type="email" name="email" placeholder="email" value={formData.email} onChange={handleChange} className="form-input w-full bg-gray-50 border border-gray-200 rounded-md px-5 py-3.5 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-900" required />
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <input type="tel" name="phone" placeholder="Phone" value={formData.phone} onChange={handleChange} className="form-input w-full bg-gray-50 border border-gray-200 rounded-lg px-5 py-3.5 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-900" required />
-                  <select name="reraStatus" value={formData.reraStatus} onChange={handleChange} className="form-input w-full bg-gray-50 border border-gray-200 rounded-lg px-5 py-3.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900" required>
+                  <input type="tel" name="phone" placeholder="Phone" value={formData.phone} onChange={handleChange} className="form-input w-full bg-gray-50 border border-gray-200 rounded-md px-5 py-3.5 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-900" required />
+                  <select name="reraStatus" value={formData.reraStatus} onChange={handleChange} className="form-input w-full bg-gray-50 border border-gray-200 rounded-md px-5 py-3.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900" required>
                     <option value="">RERA Status</option>
                     <option value="active">Active RERA Card</option>
                     <option value="pending">Pending</option>
@@ -442,7 +584,7 @@ export default function AgentsPage() {
                   </select>
                 </div>
 
-                <select name="experienceLevel" value={formData.experienceLevel} onChange={handleChange} className="form-input w-full bg-gray-50 border border-gray-200 rounded-lg px-5 py-3.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900" required>
+                <select name="experienceLevel" value={formData.experienceLevel} onChange={handleChange} className="form-input w-full bg-gray-50 border border-gray-200 rounded-md px-5 py-3.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900" required>
                   <option value="">Experience level</option>
                   <option value="beginner">0-1 years</option>
                   <option value="intermediate">1-3 years</option>
@@ -450,9 +592,9 @@ export default function AgentsPage() {
                   <option value="expert">5+ years</option>
                 </select>
 
-                <textarea name="message" placeholder="Message / Notes" value={formData.message} onChange={handleChange} rows={5} className="form-input w-full bg-gray-50 border border-gray-200 rounded-lg px-5 py-3.5 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-900 resize-none"></textarea>
+                <textarea name="message" placeholder="Message / Notes" value={formData.message} onChange={handleChange} rows={5} className="form-input w-full bg-gray-50 border border-gray-200 rounded-md px-5 py-3.5 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-900 resize-none"></textarea>
 
-                <button type="submit" className="btn-yellow w-full sm:w-auto bg-yellow-500 text-white font-semibold px-10 py-3.5 rounded-lg cursor-pointer">
+                <button type="submit" className="btn-primary w-full sm:w-auto bg-black text-white font-semibold px-10 py-3.5 rounded-md cursor-pointer">
                   Send Message
                 </button>
 
