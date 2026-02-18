@@ -404,7 +404,7 @@ export default function AgentsPage() {
 
             <div ref={offerImgRef} style={slideStyle(offerImgV, "left")} className="order-2 lg:order-1">
               <div className="section-img relative rounded-xl overflow-hidden shadow-2xl">
-                <img src="/images/agents-meeting.jpg" alt="DHR Agent Meeting" className="w-full h-auto object-cover" />
+                <img src="/images/offer.png" alt="Offer" className="w-full h-auto object-cover" />
               </div>
             </div>
 
@@ -454,10 +454,10 @@ export default function AgentsPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto mb-16">
             {[
-              { icon: "M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z", title: "Faster payouts", bg: "bg-blue-50", color: "text-blue-800" },
-              { icon: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6", title: "Access to inventory", bg: "bg-green-50", color: "text-green-800" },
-              { icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z", title: "Support system", bg: "bg-purple-50", color: "text-purple-800" },
-              { icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z", title: "Professional backend", bg: "bg-slate-50", color: "text-slate-700" },
+              { img: "/images/payouts.png", title: "Faster payouts", bg: "bg-blue-50" },
+              { img: "/images/inventory.png", title: "Access to inventory", bg: "bg-green-50" },
+              { img: "/images/support.png", title: "Support system", bg: "bg-purple-50" },
+              { img: "/images/backend.png", title: "Professional backend", bg: "bg-slate-50" },
             ].map((item, i) => (
               <div
                 key={i}
@@ -465,10 +465,8 @@ export default function AgentsPage() {
                 style={slideStyle(benVisibles[i], "up", i * 100)}
                 className="benefit-card bg-white rounded-lg p-8 shadow-sm text-center cursor-pointer border border-gray-100"
               >
-                <div className={`icon-wrap w-20 h-20 mx-auto mb-6 ${item.bg} rounded-full flex items-center justify-center`}>
-                  <svg className={`w-10 h-10 ${item.color}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={item.icon} />
-                  </svg>
+                <div className={`icon-wrap w-28 h-28 mx-auto mb-6 ${item.bg} rounded-full flex items-center justify-center`}>
+                  <img src={item.img} alt={item.title} className="w-16 h-16 object-contain" />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
               </div>
@@ -561,7 +559,7 @@ export default function AgentsPage() {
 
             <div ref={partnerImgRef} style={slideStyle(partnerImgV, "left")}>
               <div className="section-img relative rounded-xl overflow-hidden shadow-2xl">
-                <img src="/images/partner-team.jpg" alt="Become a Partner" className="w-full h-auto object-cover" />
+                <img src="/images/partner.png" alt="Partner" className="w-full h-auto object-cover" />
               </div>
             </div>
 
