@@ -105,9 +105,8 @@ export default function AboutUsPage() {
         <FloatingParticles count={20} color="rgba(251,191,36,0.15)" />
 
         <motion.div
-          style={{ opacity: heroOpacity }}
           className="relative z-10 flex flex-col items-center justify-center text-center px-6 md:px-16 lg:px-24"
-          style={{ minHeight: "100vh" }}
+          style={{ opacity: heroOpacity, minHeight: "100vh" }}
         >
           <motion.span
             initial={{ opacity: 0, y: 20 }}
