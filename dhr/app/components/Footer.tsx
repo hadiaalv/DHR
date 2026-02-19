@@ -40,10 +40,13 @@ export default function Footer() {
             <h4 className="font-semibold text-lg mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li><a href="#about" className="text-gray-600 hover:text-gray-900 transition-colors">About Us</a></li>
-              <li><a href="#services" className="text-gray-600 hover:text-gray-900 transition-colors">Services</a></li>
-              <li><a href="#properties" className="text-gray-600 hover:text-gray-900 transition-colors">Properties</a></li>
-              <li><a href="#portfolio" className="text-gray-600 hover:text-gray-900 transition-colors">Portfolio</a></li>
-              <li><a href="#contact" className="text-gray-600 hover:text-gray-900 transition-colors">Contact</a></li>
+              <li><a href="#services" className="text-gray-600 hover:text-gray-900 transition-colors">WHY DHR</a></li>
+              <li><a href="#properties" className="text-gray-600 hover:text-gray-900 transition-colors">Buy</a></li>
+              <li><a href="#portfolio" className="text-gray-600 hover:text-gray-900 transition-colors">Rent</a></li>
+              <li><a href="#contact" className="text-gray-600 hover:text-gray-900 transition-colors">Agents</a></li>
+              <li><a href="#contact" className="text-gray-600 hover:text-gray-900 transition-colors">Blogs</a></li>
+              <li><a href="#contact" className="text-gray-600 hover:text-gray-900 transition-colors">Contact Us</a></li>
+              <li><a href="#contact" className="text-gray-600 hover:text-gray-900 transition-colors">Earn with DHR</a></li>
             </ul>
           </div>
 
