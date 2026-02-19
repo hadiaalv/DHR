@@ -1,6 +1,7 @@
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { CursorFollower } from "./components/MotionComponents";
 
 export const metadata = {
   title: "Dream Heaven Realty LLC - Premium Real Estate Company",
@@ -18,6 +19,7 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <CursorFollower />
       </body>
     </html>
   );

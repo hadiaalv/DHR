@@ -23,16 +23,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
-/* ── Hide custom cursor on touch ── */
-@media (hover: none) {
-  body > div[style*="pointer-events: none"] { display: none !important; }
-}
 
-/* ── Override default browser cursor so custom one shows ── */
-@media (hover: hover) {
-  * { cursor: none !important; }
-  a, button, [role="button"] { cursor: none !important; }
-}
 
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 8px; }
